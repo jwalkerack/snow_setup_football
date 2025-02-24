@@ -1,15 +1,32 @@
-The Purpose of the Code here to be used to set up the key elements in snowflake
-The main transformation is being preformed in the DBT repo
+Project Overview
+This repository contains the infrastructure setup for key elements in Snowflake, focusing on the foundational components required for data processing and transformation.
 
-Contain here are the aspects that relate to the infrasture that needs to be set up in relation to databases , tables , roles , task ETC
+While the primary transformations occur in the DBT repository, this code is responsible for configuring the necessary databases, tables, roles, tasks, and other infrastructure components.
 
-There are two main aspects to this 
-Firstly setting up the data pipeline from S3 into Snowfkale
-Secondly setting up Transformation Process Driven by DBT
+Key Components
+The setup consists of two main aspects:
 
-This code Currently has the Development code. But in reality this is the same code for Production. With PRD being referenced instead of DEV
+Data Pipeline Setup
 
-DEV : S3/DATA_DEV/ -- Would be stored in RAW_FOOTBALL.BBC_DEV and transformed data stored in DEV_FOOTBALL.DEV_FOOTBALL
-PRD : S3/DATA/ -- Would be stored in RAW_FOOTBALL.BBC_PRD and transformed data stored in PRD_FOOTBALL.PRD_FOOTBALL
+Establishes the ingestion pipeline from Amazon S3 into Snowflake.
+Transformation Process
 
-The Query folder contains queries used for checks on the data after the DBT process has finshed
+The transformation logic is managed within DBT, leveraging the ingested data.
+Environments
+This repository currently contains development code, but the logic remains the same for production, with only the environment references differing.
+
+Development (DEV)
+Source Data: S3/DATA_DEV/
+Raw Layer: RAW_FOOTBALL.BBC_DEV
+Transformed Data: DEV_FOOTBALL.DEV_FOOTBALL
+Production (PRD)
+Source Data: S3/DATA/
+Raw Layer: RAW_FOOTBALL.BBC_PRD
+Transformed Data: PRD_FOOTBALL.PRD_FOOTBALL
+Directory Structure
+/queries → Contains SQL queries for data validation after the DBT transformation process.
+/func → Infrastructure setup scripts for configuring Snowflake components.
+
+Notes
+The development and production codebases are identical, except for environment references (DEV vs. PRD).
+The data pipeline ensures ingestion from S3 into Snowflake, and DBT takes care of transformation logic.
